@@ -1,0 +1,231 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-color: #000000;
+    --text-font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --sidebar-bg: #111111;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--text-font);
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: background-color 0.3s ease, font-family 0.3s ease;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Updated Top Nav for Sidebar Toggle */
+.top-nav {
+    position: absolute;
+    top: 30px;
+    right: 30px; /* Moved to corner for sidebar feel */
+    z-index: 10;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem; 
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.icon-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Sidebar Styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background: var(--sidebar-bg);
+    border-left: 1px solid #333;
+    z-index: 100;
+    padding: 30px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+.sidebar.hidden {
+    transform: translateX(100%);
+    display: block !important; /* Overriding default hidden to allow transition */
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header h2 {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.sidebar-close {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.sidebar-content h3 {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #333;
+    margin: 30px 0;
+}
+
+/* Settings Items */
+.setting-item {
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.setting-item label { 
+    font-size: 0.8rem; 
+    color: #888; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Switch/Toggle Styling */
+.switch-label {
+    flex-direction: row !important;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+#limit-toggle {
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+}
+
+/* Main Counter Area (Same as before) */
+.counter-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-count {
+    font-size: 16rem;
+    font-weight: 200;
+    line-height: 1;
+    user-select: none;
+}
+
+.available-display {
+    margin-top: 10px;
+}
+
+#max-display {
+    font-size: 3rem;
+    font-weight: 300;
+}
+
+#available-label {
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    opacity: 0.6;
+    margin-top: 5px;
+}
+
+.big-reset-btn {
+    margin-top: 50px;
+    padding: 12px 35px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.big-reset-btn:hover {
+    background: white;
+    color: black;
+}
+
+.control-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.dec-btn { left: 40px; }
+.inc-btn { right: 40px; }
+
+input[type="color"], select, input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    background: #222;
+    border: 1px solid #444;
+    color: white;
+    border-radius: 6px;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pop { animation: pop 0.1s ease-out; }
+
+@media (max-width: 600px) {
+    .sidebar { width: 100%; }
+    .main-count { font-size: 10rem; }
+}

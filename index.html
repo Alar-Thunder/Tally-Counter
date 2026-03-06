@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally Counter</title>
+    <link rel="stylesheet" href="protocs1.css">
+</head>
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <button id="sidebar-toggle" class="icon-btn" aria-label="Open Menu">☰</button>
+        </nav>
+
+        <aside id="sidebar" class="sidebar hidden">
+            <div class="sidebar-header">
+                <h2>Menu</h2>
+                <button id="sidebar-close" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="sidebar-content">
+                <section class="settings-section">
+                    <h3>Settings</h3>
+                    
+                    <div class="setting-item">
+                        <label class="switch-label">
+                            Enable Limit
+                            <input type="checkbox" id="limit-toggle">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="max-count-input">Maximum Tally Count:</label>
+                        <input type="number" id="max-count-input" value="10">
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="font-select">Text Font:</label>
+                        <select id="font-select">
+                            <option value="sans-serif">Default Sans-Serif</option>
+                            <option value="'Bradley Hand', cursive">Bradley Hand</option>
+                            <option value="'Apple Chancery', cursive">Apple Chancery</option>
+                            <option value="'American Typewriter', serif">American Typewriter</option>
+                            <option value="'Ink Free', cursive">Ink Free</option>
+                            <option value="monospace">Monospace</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-item">
+                        <label for="bg-color">Background Color:</label>
+                        <input type="color" id="bg-color" value="#000000">
+                    </div>
+                </section>
+
+                <hr>
+
+                <section class="info-section">
+                    <h3>Project Information</h3>
+                    <p>Made by Romit Chhawchharia in India</p>
+                </section>
+            </div>
+        </aside>
+
+        <main class="counter-wrapper">
+            <div class="tally-display">
+                <span id="tally-count" class="main-count">0</span>
+            </div>
+            
+            <div class="available-display">
+                <span id="max-display">10</span>
+                <p id="available-label">AVAILABLE</p>
+            </div>
+
+            <button class="big-reset-btn reset-btn">RESET COUNTER</button>
+
+            <button class="control-btn dec-btn" id="decrement" aria-label="Decrease">-</button>
+            <button class="control-btn inc-btn" id="increment" aria-label="Increase">+</button>
+        </main>
+    </div>
+    <script src="protoj1.js"></script>
+</body>
+</html>
