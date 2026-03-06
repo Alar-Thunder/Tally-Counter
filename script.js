@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Core Elements
     const tallyCount = document.getElementById('tally-count');
     const maxDisplay = document.getElementById('max-display');
     const availableLabel = document.getElementById('available-label');
@@ -8,12 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const decBtn = document.getElementById('decrement');
     const resetBtn = document.querySelector('.reset-btn');
     
-    // Sidebar Elements
     const sidebar = document.getElementById('sidebar');
     const sidebarToggle = document.getElementById('sidebar-toggle');
     const sidebarClose = document.getElementById('sidebar-close');
 
-    // Settings Elements
     const fontSelect = document.getElementById('font-select');
     const bgColorInput = document.getElementById('bg-color');
     const maxCountInput = document.getElementById('max-count-input');
@@ -24,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         maxCount: 10,
         bgColor: '#000000',
         font: 'sans-serif',
-        limitEnabled: true // New state property
+        limitEnabled: true 
     };
 
     function updateUI() {
@@ -33,10 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const remaining = state.maxCount - state.count;
         
         if (remaining < 0) {
-            // Show -1, -2, etc. if over the limit
+           
             maxDisplay.textContent = remaining; 
             availableLabel.textContent = "OVER LIMIT";
-            maxDisplay.style.color = "#ff4444"; // Visual cue for exceeding
+            maxDisplay.style.color = "#ff4444"; 
         } else {
             maxDisplay.textContent = remaining;
             availableLabel.textContent = "AVAILABLE";
@@ -67,10 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
         updateUI();
     }
 
-    // --- Counter Logic ---
 
     incBtn.addEventListener('click', () => {
-        // If limit is ON, don't allow incrementing past max
+       
         if (state.limitEnabled && state.count >= state.maxCount) {
             return; 
         }
@@ -80,8 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     decBtn.addEventListener('click', () => {
-        // Allow decrementing as long as it's not 0 
-        // (Or allow negative counts if you prefer, but standard is 0)
+        
         if (state.count > 0) {
             state.count--;
             updateUI();
@@ -95,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         saveState();
     });
 
-    // --- Settings Listeners ---
 
     limitToggle.addEventListener('change', (e) => {
         state.limitEnabled = e.target.checked;
@@ -120,7 +114,6 @@ document.addEventListener('DOMContentLoaded', function() {
         saveState();
     });
 
-    // --- Sidebar Logic ---
 
     function openSidebar() {
         sidebar.classList.remove('hidden');
@@ -133,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     sidebarToggle.addEventListener('click', openSidebar);
     sidebarClose.addEventListener('click', closeSidebar);
 
-    // Close sidebar when clicking outside of it
     window.addEventListener('click', (e) => {
         if (!sidebar.contains(e.target) && e.target !== sidebarToggle) {
             closeSidebar();
